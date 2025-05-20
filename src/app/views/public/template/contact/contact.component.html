@@ -1,0 +1,102 @@
+<div class="flex flex-col lg:flex-row w-full py-8">
+    <div class="flex flex-col w-full">
+      <div class="p-4">
+        <h2 class="pb-6 text-3xl underline decoration-[#EFB810] underline-offset-[6px]">
+          COMUNICATE CON NOSOTROS
+        </h2>
+      </div>
+      <div class="flex flex-col lg:flex-row gap-6 p-6">
+        <!-- Primera ventana -->
+        <div class="lg:w-1/2 bg-gray-100 p-6 rounded shadow">
+          <p class="text-lg mb-4 font-medium ">¡Únete a la familia de <span class="text-xl tracking-wider mx-1 underline decoration-[#EFB810]">LADORADA</span> Fish Farm!</p>
+          <p class="text-base mb-4 font-medium text-justify">
+            Estamos encantados de escucharte. Contáctanos a través de cualquiera de nuestros canales:
+          </p>
+          <h3 class="flex flex-row max-sm:flex-col items-center my-1.5 max-sm:my-3">
+            <p class="flex items-center mr-3 font-bold text-neutral-800">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="mr-1.5 size-5 text-red-600">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
+                </svg>
+                Ubicación:
+            </p> 
+            <p>Calle Oscar Zambrano #229, Lima, Perú</p>
+          </h3>
+          <h3 class="flex flex-row max-sm:flex-col items-center my-1.5 max-sm:my-3">
+            <p class="flex items-center mr-3 font-bold text-neutral-800">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="mr-1.5 size-5 text-cyan-600">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
+                </svg>                  
+                Horario de Atención:
+            </p> 
+            <p>LADORADA Fish Farm</p>
+          </h3>
+          <h3 class="flex flex-row max-sm:flex-col items-center my-1.5 max-sm:my-3">
+            <p class="flex items-center mr-3 font-bold text-neutral-800">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="mr-1.5 size-5 text-yellow-500">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
+                  </svg>                  
+                E-mail:
+            </p> 
+            <p><a href="mailto:contacto@ladorada.pe" class="text-[#846918]">contactoladorada.pe</a></p>
+          </h3>
+          <h3 class="flex flex-row max-sm:flex-col items-center my-1.5 max-sm:my-3">
+            <p class="flex items-center mr-3 font-bold text-neutral-800">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="mr-1.5 size-5 text-green-600">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 3.75v4.5m0-4.5h-4.5m4.5 0-6 6m3 12c-8.284 0-15-6.716-15-15V4.5A2.25 2.25 0 0 1 4.5 2.25h1.372c.516 0 .966.351 1.091.852l1.106 4.423c.11.44-.054.902-.417 1.173l-1.293.97a1.062 1.062 0 0 0-.38 1.21 12.035 12.035 0 0 0 7.143 7.143c.441.162.928-.004 1.21-.38l.97-1.293a1.125 1.125 0 0 1 1.173-.417l4.423 1.106c.5.125.852.575.852 1.091V19.5a2.25 2.25 0 0 1-2.25 2.25h-2.25Z" />
+                </svg>  
+                Teléfono:
+            </p>
+            <p> <a href="tel:+51987654321" class="text-[#181a84]">+51 916 186 577</a></p>
+          </h3>
+        </div>
+      
+        <!-- Segunda ventana -->
+        <div class="lg:w-1/2 bg-white p-6 rounded shadow">
+          <h2 class="pb-6 text-3xl underline decoration-[#EFB810] underline-offset-[6px]">
+            CONTÁCTANOS
+          </h2>
+          <form [formGroup]="formData" (ngSubmit)="submit()">
+            <div class="mb-4">
+              <label for="nombre" class="block font-medium mb-1">Nombre</label>
+              <input id="nombre" formControlName="nombre" pInputText class="w-full" placeholder="Ingresa tu nombre" />
+              <small *ngIf="submitted && f['nombre'].errors?.['required']" class="text-red-600 ml-1">* Nombre requerido</small>
+            </div>
+
+            <div class="mb-4">
+              <label for="correo" class="block font-medium mb-1">Correo</label>
+              <input id="correo" formControlName="correo" pInputText type="email" class="w-full" placeholder="Ingresa tu correo electrónico" />
+              <small *ngIf="submitted && f['correo'].errors?.['required']" class="text-red-600 ml-1">* Correo requerido</small>
+              <small *ngIf="submitted && f['correo'].errors?.['email']" class="text-red-600 ml-1">* Formato de correo inválido</small>
+            </div>
+
+            <div class="mb-4">
+              <label for="mensaje" class="block font-medium mb-1">Mensaje</label>
+              <textarea id="mensaje" formControlName="mensaje" pTextarea rows="5" class="w-full" placeholder="Déjanos un comentario"></textarea>
+              <small *ngIf="submitted && f['mensaje'].errors?.['required']" class="text-red-600 ml-1">* Comentario requerido</small>
+            </div>
+
+            <div class="flex justify-center">
+              <button type="submit" class="bg-amber-300 py-1 w-1/2 rounded-sm text-center text-xl hover:bg-amber-400">
+              
+                  <span *ngIf="!btnLoading"> 
+                       Enviar
+                  </span>
+
+                  <div *ngIf="btnLoading" class="flex items-center justify-center w-full">
+                    <img src="assets/images/loading.gif" alt="loading" class="w-4" />
+                    <span class="ml-0.5  text-gray-700">Suscribiendose...</span>
+                  </div>
+              
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+      
+      
+    </div>
+  </div>
+    
+<p-toast />

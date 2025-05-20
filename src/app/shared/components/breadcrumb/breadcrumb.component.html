@@ -1,0 +1,17 @@
+<div class="pt-2 pb-8">
+    <ul class="flex gap-3 items-center flex-wrap">
+      <li *ngFor="let item of items; let i = index; let isFirst = first; let isLast = last"
+          [ngClass]="getClassLi(isFirst, isLast)">
+        
+        <span *ngIf="isFirst" [ngClass]="getClassSpan(isFirst, isLast)">
+          <a href="" [routerLink]="['/views/dashboard']" >
+            <img src="/assets/images/icon-dashboard-panel.svg" alt="panel" class="w-5">
+          </a>
+        </span>
+        
+        <span [ngClass]="getClassSpan(isFirst, isLast)">
+          {{ item.name }}
+        </span>
+      </li>
+    </ul>
+  </div>

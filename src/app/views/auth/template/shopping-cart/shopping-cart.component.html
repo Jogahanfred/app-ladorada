@@ -1,0 +1,306 @@
+<div class="flex flex-col lg:flex-row w-full py-8">
+    <div class="flex flex-col w-full">
+      <div class="p-4">
+        <h2 class="pb-6 text-3xl underline decoration-[#EFB810] underline-offset-[6px]">
+          MI CARRITO
+        </h2> 
+        <div *ngIf="cart$ | async as cart" class="max-w-6xl mx-auto bg-white shadow-md rounded-md mt-5">
+          <div *ngIf="cart.products.length > 0; else emptyCart">
+            <div class="p-6 border-b border-neutral-300">
+                <div class="flex items-center mb-2">
+                  <img src="" alt="certificacion1" class="max-lg:hidden rounded w-10 object-cover mr-4" srcset="assets/images/icon/compra-segura.png" />            
+                  <p class="text-sm text-gray-600 text-justify">Todas las ventas registradas están protegidas por el programa de Seguridad de Transacciones de <strong class="text-black underline decoration-[#EFB810] underline-offset-[4px]" >LADORADA</strong>. Si surge algún problema con el pedido —como productos no entregados, dañados o diferentes— el comprador podrá solicitar soporte y reembolso. Asegúrate de ingresar los datos correctamente. </p>
+                </div>
+            </div>
+  
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 p-6">
+                <div class="lg:col-span-2"> 
+                  <div class="lg:border-r-1 border-neutral-300 lg:pr-6">
+                    <div *ngFor="let product of cart.products" class="border-b lg:border-neutral-300 border-neutral-500 py-5 lg:py-2">
+                      <!-- Titulo -->
+                      <div class="flex items-center mb-3">
+                          <div class="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center mr-3"> 
+                             <img src="" alt="certificacion1" class="rounded w-7 object-cover" srcset="assets/images/icon/aprobado.png" />
+                          </div>
+                          <div>
+                              <h2 class="text-2xl font-semibold uppercase">{{ product.name }}</h2>
+                          </div>
+                      </div>
+  
+                      <!-- Detalle del producto -->
+                      <div class="flex lg:flex-row flex-col items-start mb-4">
+                          <div class="w-full lg:w-1/3 mr-2 relative">
+                              <img src="/assets/images/dishes/{{ product.image }}"  alt="{{ product.name }}" class="w-full h-52 object-cover rounded">
+                              <span *ngIf="product.discount?.hasDiscount" class="absolute top-0.5 bg-green-200 text-green-700 text-xs px-2 py-1 rounded-full mb-1">{{ product.discount.percentage }} % descuento</span>
+                          </div>
+                          <div class="w-full lg:w-2/3 lg:px-2 max-lg:pt-2">
+                              <div class="mb-2">
+                                  <h3 class="text-lg font-medium">{{ product.description }}</h3>
+                                  <p class="text-xs text-gray-500">{{ product.origin }}</p>
+                              </div>
+                              <div class="mb-1">
+                                  <p class="text-sm text-gray-600">Personalización: Sin picante</p>
+                                  <p class="text-xs text-green-500">Toma de pedido: 11:09:22</p>
+                              </div> 
+                              <div class="flex justify-between pb-2">
+                                  <p class="text-xl flex items-center">
+                                    <span class="text-neutral-800 mr-2">Cantidad: </span>
+                                    <input type="number" class="focus:outline-none focus:border-neutral-400 text-center border  border-neutral-400 rounded-sm w-10 text-neutral-500 text-sm" [value]="product.quantity" min="1" (change)="updateProductQuantity(product.id, $event)"/>
+                                  </p> 
+                                  <button (click)="removeProductFromCart(product.id)" class="flex items-center justify-center text-sm bg-red-500 rounded-xs hover:bg-red-600 hover:cursor-pointer text-white px-2 py-0.5">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0" />
+                                    </svg>
+                                    <span class="mt-0.5 uppercase">
+                                        Eliminar
+                                    </span>
+                                  </button>
+                              </div>
+                              <div class="border-t pt-2 border-neutral-200">
+                                  <ng-container *ngIf="product.discount?.hasDiscount; else sinDescuento">
+                                      
+                                      <!-- Precio unitario original (tachado) -->
+                                      <p class="text-sm text-gray-500 line-through">
+                                      Precio unitario: ${{ product.price | number: '1.2-2' }}
+                                      </p>
+                                      
+                                      <!-- Precio unitario con descuento -->
+                                      <p class="text-md font-semibold text-green-600">
+                                      Precio con descuento: ${{ (product.price * (1 - product.discount.percentage / 100)) | number: '1.2-2' }}
+                                      </p>
+  
+                                      <!-- Precio subtotal con descuento -->
+                                      <p class="text-md font-semibold">
+                                      Precio Sub Total: ${{ (product.quantity * product.price * (1 - product.discount.percentage / 100)) | number: '1.2-2' }}
+                                      </p>
+  
+                                  </ng-container>
+   
+                                  <ng-template #sinDescuento>
+                                      <p class="text-md font-semibold">
+                                      Precio unitario: ${{ product.price | number: '1.2-2' }}
+                                      </p>
+                                      <p class="text-md font-semibold">
+                                      Precio Sub Total: ${{ product.quantity * product.price | number: '1.2-2' }}
+                                      </p>
+                                  </ng-template>
+                              </div>
+                          </div> 
+                      </div>
+                      <p class="text-sm text-gray-700">Envió: <span class="font-semibold uppercase text-green-600">Gratis</span> (NO APLICA)</p>
+                    </div>
+  
+                    <div class="max-lg:flex-col py-5 lg:pt-5 flex justify-between max-lg:border-b-4 max-lg:border-yellow-200">
+                        <p class="max-lg:my-2 max-lg:p-2.5 text-xl lg:text-xl bg-yellow-300 max-lg:text-center"><strong>TOTAL A PAGAR: $ {{ cart.total | number:'1.2-2' }}</strong></p>
+                        <button (click)="clearCart()" class="flex items-center justify-center text-lg lg:text-sm bg-[#8a0b85] rounded-xs hover:bg-[#662664] hover:cursor-pointer text-white p-4 lg:px-2 lg:py-0.5">
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5 lg:size-4 mr-0.5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0" />
+                          </svg>
+                          VACIAR CARRITO
+                        </button>
+                    </div>
+                     
+                  </div>
+                </div>
+  
+                <div class="lg:col-span-1 px-6 py-2 sticky top-24 self-start">
+                    <h2 class="text-2xl font-semibold mb-4 uppercase">ORDEN DE PAGO</h2>
+                    <div class="flex items-center space-x-2 mb-3">
+                        <div class="rounded-full border w-6 h-6 flex items-center justify-center">
+                            <input type="radio" name="payment" [(ngModel)]="selectedPaymentMethod" value="TARJETA" class="form-radio h-4 w-4 text-gray-600">
+                        </div>
+                        <div class="flex space-x-1">
+                            <img src="assets/images/pay/visa.png" alt="Visa" class="w-8 h-4 object-contain">
+                            <img src="assets/images/pay/mastercard.png" alt="Mastercard" class="w-8 h-4 object-contain">
+                            <img src="assets/images/pay/amex.png" alt="Amex" class="w-8 h-4 object-contain">
+                            <img src="assets/images/pay/dinner_club.png" alt="Dinner club" class="w-8 h-4 object-contain"> 
+                            <img src="assets/images/pay/paypal.png" alt="PayPal" class="w-8 h-4 object-contain">
+                            <img src="assets/images/pay/google_pay.png" alt="Google Pay" class="w-8 h-4 object-contain"> 
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-1 mb-3">
+                        <div class="rounded-full border w-6 h-6 flex items-center justify-center">
+                            <input type="radio" name="payment" [(ngModel)]="selectedPaymentMethod" value="BILLETERA" class="form-radio h-4 w-4 text-gray-600">
+                        </div>
+                        <div class="flex">
+                          <img src="assets/images/pay/yape.png" alt="Yape" class="w-12 h-6 object-contain">
+                          <img src="assets/images/pay/plin.png" alt="Plin" class="w-12 h-6 object-contain">
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-2 mb-3">
+                        <div class="rounded-full border w-6 h-6 flex items-center justify-center">
+                            <input type="radio" name="payment" [(ngModel)]="selectedPaymentMethod" value="EFECTIVO" class="form-radio h-4 w-4 text-gray-600">
+                        </div>
+                        <label class="text-sm text-gray-700">Pago Directo: <span class="text-md">EN EFECTIVO</span></label>
+                    </div>
+  
+                    <p class="text-base lg:text-xs text-gray-500 mb-4"><span class="text-sm text-black">* Nota:</span> Si pagas con tarjeta, aplicaremos un 5% adicional sobre el total.</p>
+  
+                    <div class="border-t pt-4 text-base lg:text-lg text-gray-700">
+                        <div class="flex justify-between mb-2">
+                            <span>Item(s) total</span>
+                            <span>${{ itemTotal | number:'1.2-2' }}</span>
+                        </div>
+                        <div class="flex justify-between mb-2">
+                            <span>Descuento</span>
+                            <span class="text-green-500">- ${{ totalDiscount | number:'1.2-2' }}</span>
+                        </div>
+                        <div class="flex justify-between mb-2">
+                            <span>Subtotal</span>
+                            <span>${{ subtotal | number:'1.2-2' }}</span>
+                        </div>
+                        <div class="flex justify-between mb-2">
+                            <span>Envío <span class="text-xs">(NO APLICA)</span></span>
+                            <span>$0.00</span>
+                        </div>
+                        <div class="flex justify-between mb-2">
+                            <span>Impuesto <sup class="text-xs">*</sup></span>
+                            <span>${{ tax | number:'1.2-2' }}</span>
+                        </div>
+                        <div class="border-t pt-4 flex justify-between font-semibold">
+                            <span>Total ({{ totalItems }} items)</span>
+                            <span>${{ totalToPay | number:'1.2-2' }}</span>
+                        </div>
+                    </div>
+  
+                    <div class="mt-4 flex items-center ">
+                        <input type="checkbox" [(ngModel)]="selectedTermsAndConditions" class="form-checkbox h-4 w-4 text-gray-600 mr-2">
+                        <label class="text-sm text-gray-700">He leído los terminos y condiciones<a (click)="openTermsAndConditions()" class="text-blue-500 underline ml-1">Mas información</a></label>
+                    </div>
+  
+                    <button (click)="proccessPay()" class="w-full flex items-center justify-center text-base bg-green-500 hover:bg-green-600 rounded-xs hover:cursor-pointer text-white p-3 my-2">
+                           
+                           <span *ngIf="!btnLoading">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5 mr-1">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m-3-2.818.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                                </svg> 
+                                    PROCESAR PAGO
+                            </span>
+
+                            <div *ngIf="btnLoading" class="flex items-center justify-center w-full">
+                            <img src="assets/images/loading.gif" alt="loading" class="w-4" />
+                            <p class="ml-0.5 text-sm text-gray-700">Cargando...</p>
+                            </div>
+                    </button>
+  
+                    <!-- <div class="mt-3 flex items-center">
+                        <svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        <a href="#" class="text-sm text-green-500">Aplicar cupón de descuento</a>
+                    </div> -->
+                </div>
+            </div>
+          </div>
+          
+          <ng-template #emptyCart>
+            <div class="bg-blue-300 text-neutral-800 rounded p-2 flex text-lg items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5 mr-2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
+              </svg>
+              <p>El carrito de compras está vacío.</p>
+            </div>
+          </ng-template>
+        </div> 
+ 
+
+      </div> 
+    </div>
+  </div>
+
+
+  
+<p-dialog [(visible)]="termsAndConditionsDialog"
+          [modal]="true"
+          [breakpoints]="{ '1199px': '75vw', '575px': '90vw' }"
+          [style]="{ width: '70vw' }"
+          [draggable]="false"
+          [resizable]="false">
+    
+    <ng-template #header>
+        <h1 class="text-3xl underline decoration-[#EFB810] underline-offset-[6px]">
+          TÉRMINOS Y CONDICIONES DE USO 
+        </h1> 
+      
+    </ng-template>
+
+    <ng-template #content>
+        <div class="text-sm text-neutral-800 space-y-4 max-h-[60vh] overflow-y-auto pr-2 leading-relaxed">
+            <p>
+                Bienvenido/a a <strong>LADORADA</strong>, nuestra plataforma digital de ventas de comida preparada, insumos y productos alimenticios. 
+                Al utilizar esta aplicación, aceptas los presentes Términos y Condiciones. Te pedimos que los leas cuidadosamente antes de continuar.
+            </p>
+
+            <h2 class="font-semibold uppercase text-lg mb-1">1. Objeto</h2>
+            <p>
+                <strong>LADORADA</strong> es una aplicación que conecta a usuarios con proveedores de alimentos, permitiéndoles realizar compras en línea de comida preparada, productos alimenticios y otros relacionados.
+            </p>
+
+            <h2 class="font-semibold uppercase text-lg mb-1">2. Aceptación de los Términos</h2>
+            <p>
+                Al registrarte y/o utilizar <strong>LADORADA</strong>, declaras haber leído, comprendido y aceptado de manera expresa los presentes Términos y Condiciones, así como nuestra Política de Privacidad.
+            </p>
+
+            <h2 class="font-semibold uppercase text-lg mb-1">3. Registro de Usuario</h2>
+            <p>
+                Para utilizar la aplicación, deberás registrarte con información personal verídica y actualizada. El usuario es responsable de mantener la confidencialidad de sus credenciales de acceso.
+            </p>
+
+            <h2 class="font-semibold uppercase text-lg mb-1">4. Proceso de Compra</h2>
+            <p>
+                Todos los productos ofrecidos en <strong>LADORADA</strong> están sujetos a disponibilidad. Los pedidos se considerarán confirmados una vez procesado el pago y aceptado por el proveedor correspondiente.
+            </p>
+
+            <h2 class="font-semibold uppercase text-lg mb-1">5. Precios y Pagos</h2>
+            <p>
+                Los precios publicados incluyen los impuestos aplicables. El pago se realiza mediante plataformas electrónicas seguras integradas en la aplicación. <strong>LADORADA</strong> no almacena información financiera del usuario.
+            </p>
+
+            <h2 class="font-semibold uppercase text-lg mb-1">6. Entregas</h2>
+            <p>
+                Las entregas son realizadas por terceros o por los propios proveedores, según disponibilidad. Los tiempos de entrega son aproximados y pueden variar según ubicación y condiciones externas.
+            </p>
+
+            <h2 class="font-semibold uppercase text-lg mb-1">7. Cancelaciones y Reembolsos</h2>
+            <p>
+                El usuario podrá solicitar la cancelación de un pedido siempre que este no haya comenzado su preparación. En caso de reembolsos, estos serán evaluados conforme a la política del proveedor involucrado.
+            </p>
+
+            <h2 class="font-semibold uppercase text-lg mb-1">8. Uso Aceptable</h2>
+            <p>
+                Está prohibido el uso indebido de la aplicación, incluyendo pero no limitado a fraude, manipulación de precios, uso de bots o cualquier práctica que afecte el normal funcionamiento del servicio.
+            </p>
+
+            <h2 class="font-semibold uppercase text-lg mb-1">9. Propiedad Intelectual</h2>
+            <p>
+                Todos los contenidos de <strong>LADORADA</strong>, incluyendo su marca, diseño, código fuente y funcionalidades, están protegidos por derechos de propiedad intelectual y pertenecen a sus respectivos titulares.
+            </p>
+
+            <h2 class="font-semibold uppercase text-lg mb-1">10. Modificaciones</h2>
+            <p>
+                <strong>LADORADA</strong> se reserva el derecho de modificar estos Términos y Condiciones en cualquier momento. Las modificaciones se informarán a través de la propia aplicación o por medios electrónicos.
+            </p>
+
+            <h2 class="font-semibold uppercase text-lg mb-1">11. Legislación Aplicable</h2>
+            <p>
+                Este acuerdo se rige por las leyes del país o jurisdicción donde opera <strong>LADORADA</strong>. En caso de conflicto, las partes se someterán a los tribunales competentes de dicha jurisdicción.
+            </p>
+
+            <h2 class="font-semibold uppercase text-lg mb-1">12. Contacto</h2>
+            <p>
+                Para consultas, reclamos o solicitudes, puedes comunicarte con nuestro equipo de soporte a través del formulario disponible en la aplicación o al correo oficial de atención al cliente.
+            </p>
+        </div>
+
+        <div class="mt-6 text-center">
+            <button (click)="hideTermsAndConditions()"
+                    type="button"
+                    class="hover:cursor-pointer hover:shadow w-full bg-[#2d3748] text-white tracking-wide font-medium py-2 rounded-xs transition duration-200 hover:bg-[#1a202c]">
+                <span>Confirmo que he leído y acepto los Términos y Condiciones</span>
+            </button>
+        </div>
+    </ng-template>
+</p-dialog>
+
+
+
+  
+<p-toast />

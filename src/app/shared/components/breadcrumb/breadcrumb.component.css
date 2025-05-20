@@ -1,0 +1,6 @@
+:host ::ng-deep .p-breadcrumb {
+    /* background: #f5f5f5 !important; */
+    background: #ffffff !important;
+    padding: 1rem .15rem;
+  }
+  

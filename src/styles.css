@@ -1,0 +1,30 @@
+@import "tailwindcss";
+@import "primeicons/primeicons.css";
+@font-face {
+  font-family: "SolanoGothic";
+  src: url("./assets/fonts/SolanoGothic.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "ZizouRegular";
+  src: url("./assets/fonts/ZizouSlab.ttf") format("truetype");
+}
+
+body {
+  font-family: "ZizouRegular";
+  box-sizing: border-box;
+}
+
+p{
+  font-family: "ZizouRegular";
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+span {
+  font-family: "SolanoGothic";
+}

@@ -1,0 +1,144 @@
+    <!-- HEADER --> 
+    <header class="header justify-between">
+        <div class="">
+            <div class="flex">
+                <button class="header-topbar-menu-button cursor-pointer lg:hidden mr-3 w-[17px]" (click)="toggleMenu()"  >
+                    <span>
+                     <svg *ngIf="!isMenuVisible" id="svg-hamburger" class="size-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25.5 21.64" fill="none">
+                         <!-- Icon Hamburguer -->
+                         <path d="M25.5,4.18H1.5a.75.75,0,1,1,0-1.5h24a.75.75,0,1,1,0,1.5Z" fill="currentColor"></path>
+                         <path d="M25.5,10.89H1.5a.75.75,0,1,1,0-1.5h24a.75.75,0,0,1,0,1.5Z" fill="currentColor"></path>
+                         <path d="M12.66,24.32H1.5a.75.75,0,0,1,0-1.5H12.66a.75.75,0,0,1,0,1.5Z" fill="currentColor"></path>
+                         <path d="M25.5,17.61H1.5a.75.75,0,0,1,0-1.5h24a.75.75,0,0,1,0,1.5Z" fill="currentColor"></path>
+                       </svg>
+                   
+                       <svg *ngIf="isMenuVisible" id="svg-x-mark" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                         <!-- Icon Close  (X) -->
+                         <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+                       </svg>                        
+                    </span>
+                </button>
+                <a href="/" class="flex items-center justify-center"> 
+                     <span class="relative text-5xl tracking-[-0.005em] text-white mr-4 after:content-[''] after:absolute after:h-6 after:top-[12px] after:border-r-[1.5px] after:border-gray-500 after:right-[-10px]">LA DORADA</span><img src="/assets/images/logo-la-dorada.png" alt="" class="mb-[2px] w-[4rem] h-[4rem]" >
+                </a>
+            </div>
+        </div>
+        <div class="hidden lg:block ml-8">
+            <ul class="flex justify-start items-center">
+                <li class="relative py-1 lg:py-0 lg:px-4"> 
+                    <a href=""
+                       [routerLink]="'/app-view/dashboard'"
+                       routerLinkActive="active-link"
+                       [routerLinkActiveOptions]="{ exact: true }"
+                       class="relative flex items-center lg:justify-start text-base pr-1 lg:text-2xl text-white hover:text-[#EFB810] 
+                                 after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 
+                                 after:bg-[#EFB810] after:transition-all after:duration-300 after:ease-in-out 
+                                 hover:after:w-full">
+                        <span class="text-base pr-1 lg:text-2xl">Dashboard</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3v11.25A2.25 2.25 0 0 0 6 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0 1 18 16.5h-2.25m-7.5 0h7.5m-7.5 0-1 3m8.5-3 1 3m0 0 .5 1.5m-.5-1.5h-9.5m0 0-.5 1.5m.75-9 3-3 2.148 2.148A12.061 12.061 0 0 1 16.5 7.605" />
+                        </svg>
+                          
+                    </a>
+                </li>
+                <li class="relative py-1 lg:py-0 lg:px-4">
+                    <a href=""
+                        [routerLink]="'/app-view/catalog'"
+                        routerLinkActive="active-link"
+                        [routerLinkActiveOptions]="{ exact: true }"
+                        class="relative flex items-center lg:justify-start text-base pr-1 lg:text-2xl text-white hover:text-[#EFB810] 
+                                after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 
+                                after:bg-[#EFB810] after:transition-all after:duration-300 after:ease-in-out 
+                                hover:after:w-full">
+                        <span class="text-base pr-1 lg:text-2xl">Catálogo</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007ZM8.625 10.5a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm7.5 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />
+                        </svg>                          
+                    </a>
+                </li>
+                <li class="relative py-1 lg:py-0 lg:px-4">
+                    <a href=""
+                       [routerLink]="'/app-view/history'"
+                       routerLinkActive="active-link"
+                       [routerLinkActiveOptions]="{ exact: true }"
+                       class="relative flex items-center lg:justify-start text-base pr-1 lg:text-2xl text-white hover:text-[#EFB810] 
+                                 after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 
+                                 after:bg-[#EFB810] after:transition-all after:duration-300 after:ease-in-out 
+                                 hover:after:w-full">
+                      <span>Historial</span>
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5 ml-1">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375m16.5 0c0-2.278-3.694-4.125-8.25-4.125S3.75 4.097 3.75 6.375m16.5 0v11.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125V6.375m16.5 0v3.75m-16.5-3.75v3.75m16.5 0v3.75C20.25 16.153 16.556 18 12 18s-8.25-1.847-8.25-4.125v-3.75m16.5 0c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125" />
+                      </svg>
+                      
+                    </a>
+                  </li>
+                <li class="relative py-1 lg:py-0 lg:px-4" >
+                    <a href="" 
+                       [routerLink]="'/app-view/shopping-cart'" 
+                       routerLinkActive="active-link"
+                       [routerLinkActiveOptions]="{ exact: true }" 
+                       class="">
+                       <span *ngIf="cartCount$ | async as count" class="absolute top-[-10px] right-2 bg-yellow-600 rounded-full px-2 text-sm">{{ count }}</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-7">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
+                        </svg>                          
+                    </a>
+                </li> 
+                <li class="relative py-1 lg:py-0 lg:px-4" >
+                    <span class=" lg:flex lg:justify-start after:content-[''] after:h-5 after:left-0 after:absolute after:bottom-2 after:border after:border-[#efb71099] hover:text-[#EFB810]"></span>
+                    <a href="" [routerLink]="'/app-view/profile'" routerLinkActive="active-link"
+                    [routerLinkActiveOptions]="{ exact: true }"  class="flex items-center">
+                        <p class="my-2">ADMINISTRADOR</p>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-7">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
+                        </svg>
+                    </a>
+                </li> 
+                <li class="relative py-1 lg:py-0 lg:px-4" >
+                    <span class=" lg:flex lg:justify-start after:content-[''] after:h-5 after:left-0 after:absolute after:bottom-1 after:border after:border-[#efb71099] hover:text-[#EFB810]"></span>
+                    <a href="" [routerLink]="'/auth/login'" (click)="cerrarSesion()"  class="flex items-center text-red-500 hover:shadow-lg hover:text-red-700">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M5.636 5.636a9 9 0 1 0 12.728 0M12 3v9" />
+                        </svg>  
+                    </a>
+                </li> 
+            </ul>
+        </div> 
+
+        <div class="header-topbar-menu hidden" [class.hidden]="!isMenuVisible">
+            <div class="header-topbar-menu-content">   
+                <p-menu [model]="items" class="flex justify-center border-0" styleClass="w-full md:w-60">
+                    <ng-template #start>
+                        <span class="inline-flex items-center gap-1 px-2 py-2 max-sm:hidden">
+                        <img src="assets/images/logo-la-dorada.png" class="block m-auto w-8" alt="Logo" /> 
+                            <span class="text-2xl font-semibold">LA<span class="ml-1 text-[#EFB810]">DORADA</span></span>
+                        </span>
+                    </ng-template>
+                    <ng-template #submenuheader let-item>
+                        <span class="font-extrabold text-2xl">{{ item.label }}</span>
+                    </ng-template>
+                    <ng-template #item let-item>
+                        <a pRipple class="flex items-center cursor-pointer px-2 py-4"
+                        [routerLink]="item.routerLink"
+                        (click)="closeMenu()"
+                        routerLinkActive="text-[#EFB810]">
+                            <span [class]="item.icon"></span>
+                            <span class="ml-2 text-2xl tracking-tighter">{{ item.label }}</span>
+                            <p-badge *ngIf="item.badge" class="ml-auto" [value]="item.badge" />
+                            <span *ngIf="item.shortcut" class="ml-auto border border-surface rounded bg-emphasis text-muted-color text-xs p-1">{{ item.shortcut }}</span>
+                        </a>
+                    </ng-template>
+                    <!-- <ng-template #end>
+                        <button pRipple class="relative overflow-hidden w-full border-0 bg-transparent flex items-center p-2 pl-4  rounded-none cursor-pointer transition-colors duration-200">
+                            <p-avatar image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png" class="mr-2" shape="circle" />
+                            <span class="inline-flex flex-col items-start">
+                                <span class="font-bold">Andersson Marcos</span>
+                                <span class="text-sm">Administrador</span>
+                            </span>
+                        </button>
+                    </ng-template> -->
+                </p-menu> 
+            </div>
+        </div>  
+   </header>
+   

@@ -1,0 +1,90 @@
+<div class="flex flex-col lg:flex-row w-full py-8">
+  <div class="flex flex-col w-full">
+    <div class="p-4">
+      <h2 class="pb-6 text-3xl underline decoration-[#EFB810] underline-offset-[6px]">
+        Historial de Ventas
+      </h2>
+      <p class="text-lg">
+        Accede a tu historial de compras y gestiona tu relación comercial con
+        <span class="font-bold text-2xl tracking-tight underline decoration-[#EFB810]">LADORADA.</span>
+        Consulta el detalle de cada operación, controla tus pedidos anteriores y mantén un seguimiento eficiente de tu portafolio de adquisiciones.
+      </p>
+    </div>
+    
+    <ng-container *ngIf="loadingPurchases; else viewPurchases">
+              <div class="flex items-center justify-center w-full">
+                  <img src="assets/images/loading.gif" alt="" class="w-10" />
+                  <p class="ml-0.5 text-base text-gray-500">Cargando...</p>
+              </div>
+    </ng-container>
+    <ng-template #viewPurchases>
+       <p-table [value]="purchases" responsiveLayout="scroll" class="mt-6">
+      <ng-template pTemplate="header">
+        <tr>
+          <th>Fecha de Compra</th>
+          <th>Total Items</th>
+          <th>Descuento</th>
+          <th>Subtotal</th>
+          <th>Envío</th>
+          <th>Impuesto</th>
+          <th>Cantidad Items</th>
+          <th>Estado</th>
+          <th>Total Compra</th>
+          <th>Detalle</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-compra>
+        <tr>
+          <td>{{ compra.Fe_fecha_compra | date: 'shortDate' }}</td>
+          <td>{{ compra.Ss_total_items | currency:'USD' }}</td>
+          <td>{{ compra.Ss_descuento | currency:'USD' }}</td>
+          <td>{{ compra.Ss_subtotal | currency:'USD' }}</td>
+          <td>{{ compra.Ss_envio | currency:'USD' }}</td>
+          <td>{{ compra.Ss_impuesto | currency:'USD' }}</td>
+          <td>{{ compra.Qt_cantidad_items }}</td>
+          <td>{{ compra.Tx_estado }}</td>
+          <td class="font-bold text-green-600">{{ compra.Ss_total_compra | currency:'USD' }}</td>
+          <td>
+             <p-button icon="pi pi-eye" severity="secondary" [outlined]="true" (onClick)="openDetail(compra)"></p-button>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table> 
+    </ng-template> 
+   
+  </div>
+</div>
+
+
+
+<p-dialog [(visible)]="purchaseDialog" [modal]="true" [breakpoints]="{ '1199px': '75vw', '575px': '90vw' }" [style]="{ width: '70vw' }" [draggable]="false" [resizable]="false">
+    <ng-template #header>
+        <h1 class="text-3xl">DETALLE DEL VENTA</h1>
+    </ng-template>
+    <ng-template #content>
+        <p-table [value]="selectedPurchase!.DetallesCompra" responsiveLayout="scroll">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th>Imagen</th>
+                    <th>Nombre del Producto</th>
+                    <th>Cantidad</th>
+                    <th>Precio Unitario</th>
+                    <th>Descuento Producto</th>
+                    <th>Subtotal</th>
+                    <th>Total</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-detalle>
+                <tr>
+                    <td><img [src]="'/assets/images/dishes/' + detalle!.Imagen_Producto"alt="Imagen producto" style="width: 50px; height: 50px; object-fit: cover;" /></td>
+                    <td>{{ detalle.Nombre_Producto }}</td>
+                    <td>{{ detalle.Qt_cantidad }}</td>
+                    <td>{{ detalle.Ss_precio_unitario | currency:'USD' }}</td>
+                    <td>{{ detalle.Ss_descuento_producto | currency:'USD' }}</td>
+                    <td>{{ detalle.Ss_subtotal | currency:'USD' }}</td>
+                    <td>{{ detalle.Ss_total | currency:'USD' }}</td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </ng-template>
+</p-dialog>

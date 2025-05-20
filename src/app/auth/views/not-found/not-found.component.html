@@ -1,0 +1,44 @@
+<div class="flex items-center justify-center min-h-screen overflow-hidden">
+    <div class="flex flex-col items-center justify-center">
+         <div>
+            <div class="w-full py-3 px-2 sm:px-3 flex flex-col items-center">
+                 
+                <img src="/assets/images/icon-404.png" alt="" class="w-17" />
+                <h1 class="text-3xl mb-2 text-[#270B73]">PAGINA NO ENCONTRADA</h1>
+                <div class="mb-8 text-gray-800">El recurso solicitado no esta disponible.</div>
+                <div class="w-full flex items-center py-8 border-b cursor-default">
+                    <span class="flex justify-center items-center border-2 border-gray-600 rounded-border p-2">
+                        <img src="/assets/images/icon-acces-denied.png" alt="" class="w-10" />
+                    </span>
+                    <span class="ml-6 flex flex-col">
+                        <span class="before:content-[''] before:absolute before:w-2 before:h-9 before:rounded-br-md before:bg-[#9f33ff] not-italic tracking-normal text-3xl text-[#280053]"><span class="ml-3">PRIVILEGIOS LIMITADOS</span></span>
+                        <span class="pl-3.5">Tal vez el rol de usuario tiene privilegios limitados.</span>
+                    </span>
+                </div>
+                <div class="w-full flex items-center py-8 border-b cursor-default">
+                    <span class="flex justify-center items-center border-2 border-gray-600 rounded-border p-2">
+                        <img src="/assets/images/icon-maintenance.png" alt="" class="w-10" />
+                    </span>
+                    <span class="ml-6 flex flex-col">
+                        <span class="before:content-[''] before:absolute before:w-2 before:h-9 before:rounded-br-md before:bg-[#3dd2f0] not-italic tracking-normal text-3xl text-[#003353]"><span class="ml-3">CENTRO DE MANTENIMIENTO</span></span>
+                        <span class="pl-3.5">A lo mejor la página esta en mantenimiento.</span>
+                    </span>
+                </div>
+                <div class="w-full flex items-center mb-8 py-8">
+                    <span class="flex justify-center items-center border-2 border-gray-600 rounded-border p-2 ro">
+                        <img src="/assets/images/icon-acces-denied.png" alt="" class="w-10" />
+                    </span>
+                    <span class="ml-6 flex flex-col">
+                        <span class="before:content-[''] before:absolute before:w-2 before:h-9 before:rounded-br-md before:bg-amber-600 not-italic tracking-normal text-3xl text-[#003353]"><span class="ml-3">UPPSS!!!</span></span>
+                        <span class="pl-3.5">Intentaste acceder a un recurso prohibido.</span>
+                    </span>
+ 
+                </div>
+                <div class="flex gap-2">
+                    <button id="button"  [routerLink]="'/public/main'" class="hover:cursor-pointer bg-amber-300 p-1 rounded-sm text-center text-sm hover:bg-amber-400"><span>IR AL PRINCIPAL</span></button>
+                     <p-button label="CERRAR SESIÓN" [routerLink]="'/auth/login'" severity="secondary" [size]="'small'"/>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

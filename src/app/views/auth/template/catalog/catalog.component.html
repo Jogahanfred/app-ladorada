@@ -1,0 +1,103 @@
+<div class="flex flex-col lg:flex-row w-full py-8">
+    <div class="flex flex-col w-full">
+      <div class="p-4">
+        <h2 class="pb-6 text-3xl underline decoration-[#EFB810] underline-offset-[6px]">
+          CATALOGO DE PRODUCTOS
+        </h2>
+        <p class="text-lg"> Estos son los productos exclusivos que <span class="font-bold text-2xl tracking-tight  underline decoration-[#EFB810] ">LADORADA</span> tiene para ti. Descubre nuestra selección gourmet, incluyendo el reconocido Baby Paiche, criado con los más altos estándares de calidad.</p>
+      </div>
+      <div class="">
+          
+    <ng-container *ngIf="loadingCatalogProduct; else carouselProducts">
+              <div class="flex items-center justify-center w-full">
+                  <img src="assets/images/loading.gif" alt="" class="w-10" />
+                  <p class="ml-0.5 text-base text-gray-500">Cargando...</p>
+              </div>
+    </ng-container>
+    <ng-template #carouselProducts> 
+            <p-carousel [value]="products"
+                      [numVisible]="4"
+                      [numScroll]="4"
+                      [circular]="false" 
+                      [responsiveOptions]="responsiveOptions">
+
+                <ng-template let-product pTemplate="item">
+                    <div class="m-2 p-4 bg-white shadow-md">
+                    <div class="mb-4">
+                        <div class="relative mx-auto">
+                        <img src="/assets/images/dishes/{{ product.image }}" [alt]="product.name" class="w-full h-56 object-cover rounded-md" />
+                        <p-tag [value]="product.inventoryStatus" [severity]="getSeverity(product.inventoryStatus)" class="absolute" [ngStyle]="{ 'left.px': 5, 'top.px': 5 }"></p-tag>
+                        </div>
+                    </div>
+                    <div class="font-medium text-lg text-center">{{ product.name }}</div>
+                    <div class="mb-2 font-medium text-sm text-neutral-500 text-center">{{ product.subName }}</div>
+                    <div class="flex justify-between items-center">
+                        <div class="font-semibold text-xl text-neutral-700">
+                        Precio:
+                        <span class="text-[#19761e]"> {{ '$' + product.price }}</span>
+                        </div>
+                        <span class="flex gap-2">
+                        <p-button icon="pi pi-eye" severity="secondary" [outlined]="true" (onClick)="openCatalogDetail(product)"></p-button>
+                        <p-button (click)="addToCart(product)" [severity]="'contrast'" icon="pi pi-shopping-cart"></p-button>
+                        </span>
+                    </div>
+                    </div>
+                </ng-template>
+                </p-carousel>
+    </ng-template>
+
+        
+
+                
+      </div>
+    </div>
+</div>
+
+<p-dialog [(visible)]="catalogDetailDialog" [modal]="true" [breakpoints]="{ '1199px': '75vw', '575px': '90vw' }" [style]="{ width: '70vw' }" [draggable]="false" [resizable]="false">
+    <ng-template #header>
+        <h1 class="text-3xl">DETALLE DEL PRODUCTO</h1>
+    </ng-template>
+    <ng-template #content>
+        <div class="flex flex-col lg:flex-row w-full">
+             <div class="flex flex-col w-full lg:w-1/3 p-10">
+             <img [src]="'/assets/images/dishes/' + selectedProduct!.image" [alt]="selectedProduct!.name" class="rounded-4xl w-full h-full object-cover shadow-2xl" />
+             <div class="flex gap-4 mt-5">
+                    <button (click)="hideDialog()" type="button" class="hover:cursor-pointer hover:shadow w-full bg-[#dfdedd]  text-neutral-700 tracking-wide py-2 rounded" >
+                        <span>Seguir Comprando</span>
+                    </button>
+                    <button (click)="addToCart(selectedProduct!)" type="button" class="flex justify-center items-center hover:cursor-pointer hover:shadow w-full bg-[#EFB810] text-neutral-700 tracking-wide py-2 rounded" >
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5 mr-1">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
+                        </svg>
+                        <span>Añadir al carrito</span>
+                    </button>
+                </div>
+            </div>
+            <div class="flex flex-col w-full lg:w-2/3">
+                <div class="p-4">
+                    <h2 class="pb-6 text-2xl underline decoration-[#EFB810] underline-offset-[6px] uppercase">{{ selectedProduct!.name }}</h2>
+                    <p class="text-justify">{{ selectedProduct!.longDescription  }}</p>
+                    <p class="text-justify">Nuestro objetivo es ofrecer al mercado gourmet el Baby Paiche, una presentación premium producida mediante Acuicultura Sostenible, contribuyendo a la preservación de esta especie y la conservación de los recursos naturales.</p>
+                </div>
+                <div class="p-4 gap-14 flex flex-col lg:flex-row">
+                    <div class="w-1/2">
+                        <h2 class="pb-6 text-2xl underline decoration-[#EFB810] underline-offset-[6px]">CARACTERISTICAS NUTRICIONALES</h2>
+                         <ul class="list-disc list-inside">
+                            <li *ngFor="let feature of selectedProduct!.nutritionalFeatures">{{ feature }}</li>
+                         </ul>
+                    </div>
+                    <div class="w-1/2">
+                        <h2 class="pb-6 text-2xl underline decoration-[#EFB810] underline-offset-[6px]">CERTIFICACIONES</h2>
+                        <div class="flex gap-4 justify-center">
+                             <img *ngIf="selectedProduct!.certifications['ISO-9001']" src="assets/images/iso/ISO-9001.png" alt="ISO 9001" class="rounded w-24 object-cover" />
+                             <img *ngIf="selectedProduct!.certifications['ISO-22000']" src="assets/images/iso/ISO-22000.png" alt="ISO 22000" class="rounded w-24 object-cover" />
+                             <img *ngIf="selectedProduct!.certifications['ISO-17065']" src="assets/images/iso/ISO-17065.png" alt="ISO 17065" class="rounded w-24 object-cover" />
+                        </div> 
+                    </div>
+                </div>
+            </div>
+           
+        </div>
+    </ng-template>
+   
+  </p-dialog>  

@@ -1,0 +1,210 @@
+[
+  {
+    "id": 1,
+    "name": "Baby Paiche Filete",
+    "subName": "Premium para llevar",
+    "image": "plato1.jpg",
+    "price": 25.50,
+    "inventoryStatus": "Disponible",
+    "description": "Filete crudo de Baby Paiche, fresco y de alta calidad. Ideal para llevar y preparar a la plancha o parrilla.",
+    "longDescription": "El Baby Paiche Filete es una opción ideal para quienes prefieren cocinar en casa con insumos frescos y premium. Este filete crudo conserva todos los beneficios nutricionales del Paiche y es perfecto para preparar a la plancha, parrilla o al vapor. Su textura suave y sabor delicado lo convierten en el favorito de chefs y amantes de la cocina saludable.",
+    "nutritionalFeatures": [
+      "Rico en colágeno natural",
+      "Ideal para dietas bajas en grasa",
+      "Libre de conservantes"
+    ],
+    "certifications": {
+      "ISO-9001": true,
+      "ISO-22000": true,
+      "ISO-17065": true
+    },
+    "discount": {
+      "hasDiscount": false,
+      "percentage": 0
+    },
+    "origin": "Amazonía Peruana",
+    "accompaniment": "Sugerido: Ensalada y arroz aromático"
+  },
+  {
+    "id": 2,
+    "name": "Paiche Ahumado",
+    "subName": "Sabor Intenso",
+    "image": "plato2.jpg",
+    "price": 32.90,
+    "inventoryStatus": "Disponible",
+    "description": "Paiche con un delicado proceso de ahumado natural. Ideal para entradas frías o tapas gourmet.",
+    "longDescription": "El Paiche Ahumado es una delicadeza amazónica con un sabor fuerte y persistente. Ahumado naturalmente, este producto es ideal para tablas de aperitivos, carpaccios, ensaladas gourmet o como parte de platos fríos. Es una excelente opción para quienes buscan un producto sin aditivos, de textura firme y aroma envolvente.",
+    "nutritionalFeatures": [
+      "Alto en proteínas",
+      "Sin aditivos químicos",
+      "Sabor intenso y duradero"
+    ],
+    "certifications": {
+      "ISO-9001": true,
+      "ISO-22000": false,
+      "ISO-17065": true
+    },
+    "discount": {
+      "hasDiscount": true,
+      "percentage": 15
+    },
+    "origin": "Amazonía Peruana",
+    "accompaniment": "Tostones y salsa criolla"
+  },
+  {
+    "id": 3,
+    "name": "Paiche Empanizado",
+    "subName": "Crocrante y Dorado",
+    "image": "plato3.jpg",
+    "price": 24.90,
+    "inventoryStatus": "Disponible",
+    "description": "Filete de Paiche empanizado con hierbas andinas, crujiente por fuera y tierno por dentro.",
+    "longDescription": "Disfruta del contraste perfecto entre lo crujiente y lo tierno con este filete de Paiche empanizado. Empanizado con hierbas andinas que realzan su sabor, es ideal para servir con puré de yuca o vegetales salteados. Un plato listo para conquistar paladares con su textura única y valor nutricional.",
+    "nutritionalFeatures": [
+      "Alto en proteínas",
+      "Bajo en sodio",
+      "Corte sin espinas"
+    ],
+    "certifications": {
+      "ISO-9001": false,
+      "ISO-22000": true,
+      "ISO-17065": true
+    },
+    "discount": {
+      "hasDiscount": false,
+      "percentage": 0
+    },
+    "origin": "Amazonía Peruana",
+    "accompaniment": "Puré de yuca y ensalada fresca"
+  },
+  {
+    "id": 4,
+    "name": "Ceviche de Paiche",
+    "subName": "Fresco y cítrico",
+    "image": "plato4.jpg",
+    "price": 28.00,
+    "inventoryStatus": "Disponible",
+    "description": "Ceviche de Paiche con limón amazónico, cebolla morada, ají charapita y cilantro. Una fusión refrescante de la selva.",
+    "longDescription": "El ceviche de Paiche es una experiencia de frescura con un toque amazónico. Preparado con ingredientes típicos como limón de la selva, ají charapita y cebolla morada, este plato combina tradición y modernidad. Ideal como entrada o plato principal, es perfecto para días calurosos o paladares exigentes.",
+    "nutritionalFeatures": [
+      "Rico en Omega 3",
+      "Preparación en frío",
+      "Libre de harinas"
+    ],
+    "certifications": {
+      "ISO-9001": true,
+      "ISO-22000": true,
+      "ISO-17065": true
+    },
+    "discount": {
+      "hasDiscount": true,
+      "percentage": 10
+    },
+    "origin": "Amazonía Peruana",
+    "accompaniment": "Choclo y chifles"
+  },
+  {
+    "id": 5,
+    "name": "Embutidos de Paiche",
+    "subName": "Listos para picar",
+    "image": "plato5.png",
+    "price": 21.50,
+    "inventoryStatus": "Pocas Unidades",
+    "description": "Variedad de embutidos artesanales elaborados con Paiche. Ideales como piqueo saludable.",
+    "longDescription": "Nuestros embutidos de Paiche son elaborados artesanalmente con cortes seleccionados del pez amazónico. Fáciles de servir, ideales para picadas, sandwiches o como parte de una tabla de quesos. Son una alternativa sabrosa y saludable a los embutidos tradicionales.",
+    "nutritionalFeatures": [
+      "Buena fuente de proteína",
+      "Sin gluten",
+      "Apto para refrigerios rápidos"
+    ],
+    "certifications": {
+      "ISO-9001": false,
+      "ISO-22000": true,
+      "ISO-17065": false
+    },
+    "discount": {
+      "hasDiscount": false,
+      "percentage": 0
+    },
+    "origin": "Amazonía Peruana",
+    "accompaniment": "Salsas caseras"
+  },
+  {
+    "id": 6,
+    "name": "Paiche Crocante",
+    "subName": "Estilo snack",
+    "image": "plato6.jpg",
+    "price": 19.90,
+    "inventoryStatus": "Disponible",
+    "description": "Tiras de Paiche crocantes, fritas en aceite vegetal. Perfectas como aperitivo o snack saludable.",
+    "longDescription": "Crujientes y sabrosas, estas tiras de Paiche fritas son una excelente opción como snack o entrada ligera. Su textura crocante las hace adictivas, y su preparación con aceite vegetal garantiza un bocado más saludable sin perder sabor.",
+    "nutritionalFeatures": [
+      "Libre de harinas",
+      "Fuente de proteínas",
+      "Textura crujiente"
+    ],
+    "certifications": {
+      "ISO-9001": false,
+      "ISO-22000": true,
+      "ISO-17065": false
+    },
+    "discount": {
+      "hasDiscount": true,
+      "percentage": 5
+    },
+    "origin": "Amazonía Peruana",
+    "accompaniment": "Salsa de cocona picante"
+  },
+  {
+    "id": 7,
+    "name": "Paiche Caramelizado",
+    "subName": "Toque gourmet",
+    "image": "plato7.png",
+    "price": 30.00,
+    "inventoryStatus": "Disponible",
+    "description": "Paiche a la plancha con cebolla caramelizada y reducción de balsámico. Un plato gourmet amazónico.",
+    "longDescription": "El Paiche Caramelizado ofrece un balance perfecto entre lo dulce y lo salado. La cebolla caramelizada y la reducción de balsámico elevan el sabor del filete a la plancha, ideal para cenas especiales o experiencias gourmet en casa.",
+    "nutritionalFeatures": [
+      "Bajo en grasa",
+      "Alto en sabor",
+      "Preparación gourmet"
+    ],
+    "certifications": {
+      "ISO-9001": true,
+      "ISO-22000": true,
+      "ISO-17065": false
+    },
+    "discount": {
+      "hasDiscount": false,
+      "percentage": 0
+    },
+    "origin": "Amazonía Peruana",
+    "accompaniment": "Puré de camote"
+  },
+  {
+    "id": 8,
+    "name": "Paiche al Coco",
+    "subName": "Fusión tropical",
+    "image": "plato8.jpg",
+    "price": 27.40,
+    "inventoryStatus": "Agotado",
+    "description": "Paiche cocinado en leche de coco con cúrcuma y jengibre. Exquisito sabor tropical.",
+    "longDescription": "Inspirado en sabores tropicales, este plato combina la suavidad del Paiche con una cremosa salsa de coco, cúrcuma y jengibre. Un plato cálido, exótico y reconfortante, ideal para acompañar con arroz jazmín o vegetales al wok.",
+    "nutritionalFeatures": [
+      "Buena fuente de potasio",
+      "Libre de lactosa",
+      "Fuente natural de energía"
+    ],
+    "certifications": {
+      "ISO-9001": false,
+      "ISO-22000": true,
+      "ISO-17065": false
+    },
+    "discount": {
+      "hasDiscount": false,
+      "percentage": 0
+    },
+    "origin": "Amazonía Peruana",
+    "accompaniment": "Arroz jazmín y vegetales salteados"
+  }
+]

@@ -1,0 +1,72 @@
+<div class="background-slider"></div>
+
+<div class="relative z-10 w-full h-screen flex items-center justify-center bg-[#000000b5] ">
+  <div class="flex flex-col items-center justify-center">
+    <img src="/assets/images/logo-la-dorada.png" alt="Logo" class="w-40 h-40 object-contain" />
+    <div class="flex flex-col items-center justify-center">
+      <div class="bg-[#f6f6f6] py-4 px-8 rounded-lg max-md:w-10/12 w-100 max-w-[400px] shadow-md shadow-gray-500">
+         
+        <form class="mt-6"  [formGroup]="loginForm" (ngSubmit)="login()">
+          <div class="mb-4">
+            <label for="noUserName">Correo</label>
+            <input pInputText
+              id="noUserName"
+              type="noUserName"
+              formControlName="noUserName"
+              placeholder="ladorada@gmail.com"
+              class="w-full border p-2 rounded mt-1"
+            />
+            <div *ngIf="submitted && f['noUserName'].errors" class="ml-1 text-red-500">
+              <small *ngIf="f['noUserName'].errors['email']">* El usuario es inválido</small> 
+              <small *ngIf="f['noUserName'].errors['required']">* El correo es requerido</small> 
+            </div>
+          </div>
+          <div class="mb-4">
+            <label for="txPassword">Contraseña</label>
+            <p-password id="txPassword"
+                        formControlName="txPassword" 
+                        toggleMask="true"
+                        [styleClass]="'w-full mt-1'"
+                        [inputStyle]="{'width': '100%'}"
+                        placeholder="********"
+            ></p-password>
+            <div *ngIf="submitted && f['txPassword'].errors" class="ml-1 text-red-500">
+              <small *ngIf="f['txPassword'].errors['required']">* La contraseña es inválida</small> 
+            </div>
+          </div>
+          
+          <button type="submit" class="hover:cursor-pointer hover:shadow w-full bg-[#EFB810]  text-neutral-700 tracking-wide py-2 rounded" >
+            <span *ngIf="!btnLoading">INICIAR SESIÓN</span>
+            <div *ngIf="btnLoading" class="flex items-center justify-center w-full">
+              <img src="assets/images/loading.gif" alt="loading" class="w-4" />
+              <p class="ml-0.5 text-sm text-gray-700">Cargando...</p>
+            </div>
+          </button>
+          <a href="/recuperar-clave" class="hover:text-[#534929] hover:underline text-sm block py-1">
+            ¿Olvidaste tu contraseña?
+          </a>
+          <div *ngIf="showCaptcha" class="flex items-center justify-center mt-4">
+            <ngx-recaptcha2 
+              [siteKey]="captchaKey" 
+              (success)="onCaptchaSuccess($event)"
+              (error)="onCaptchaError()"
+              (expire)="onCaptchaExpired()">
+            </ngx-recaptcha2>
+          </div>
+        </form>
+        <p-divider></p-divider>
+        <div class="text-center mt-4"> 
+          <a href="/registro" class="bg-gray-300 hover:text-gray-700 p-2 rounded-md hover:underline text-sm block">
+            Crear cuenta
+          </a>
+        </div>
+         <div class="text-center mt-4"> 
+          <a href="/public/main" class="text-white bg-[#000000] hover:text-[#EFB810] p-2 rounded-md text-sm block">
+            Ir a la tienda
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<p-toast />
