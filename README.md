@@ -1,59 +1,66 @@
-# AppDemoDemoPortalV1
+**LA DORADA**
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.3.
+Este proyecto corresponde al frontend de la aplicación LaDorada, desarrollado utilizando Angular CLI versión 19.2.3.
+El backend del sistema fue implementado y desplegado en AWS (Amazon Web Services), garantizando escalabilidad, seguridad y alta disponibilidad.
 
-## Development server
+**Descripción general**
 
-To start a local development server, run:
+LaDorada es una aplicación web enfocada en la gestión y experiencia de compra de productos.
+Incluye las siguientes funcionalidades principales:
 
-```bash
-ng serve
-```
+🛍️ **Catálogo de productos:** visualización y exploración de los artículos disponibles.
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+🛒 **Carrito de compras:** permite añadir, modificar o eliminar productos antes de realizar la compra.
 
-## Code scaffolding
+📦 **Gestión de estado de productos:** seguimiento del stock y disponibilidad de cada artículo.
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+🔐 **Sistema de autenticación:** módulo de login que valida las credenciales del usuario para procesar las compras de manera segura.
 
-```bash
-ng generate component component-name
-```
+**Servidor de desarrollo**
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+Para iniciar un servidor local de desarrollo, ejecuta:
 
-```bash
-ng generate --help
-```
+*ng serve*
 
-## Building
 
-To build the project run:
+Luego, abre el navegador y accede a http://localhost:4200/. La aplicación se recargará automáticamente al detectar cambios en los archivos fuente.
 
-```bash
-ng build
-```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+**Generación de código**
 
-## Running unit tests
+Angular CLI incluye potentes herramientas para la generación de código (scaffolding).
+Para crear un nuevo componente, utiliza:
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+*ng generate component component-name*
 
-```bash
-ng test
-```
 
-## Running end-to-end tests
+Para obtener una lista completa de schematics disponibles, ejecuta:
 
-For end-to-end (e2e) testing, run:
+*ng generate --help*
 
-```bash
-ng e2e
-```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+**Compilación del proyecto**
 
-## Additional Resources
+Para compilar el proyecto, utiliza:
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+*ng build*
+
+
+Los artefactos generados se almacenarán en el directorio dist/.
+La compilación de producción optimiza la aplicación para un mejor rendimiento y tiempos de carga reducidos.
+
+**Ejecución de pruebas unitarias**
+
+Para ejecutar las pruebas unitarias con el test runner Karma, ejecuta:
+
+*ng test*
+
+**Recursos adicionales**
+
+Para más información sobre Angular CLI, visita la documentación oficial:
+👉 Angular CLI Overview and Command Reference
+
+📘 Información del proyecto
+
+Este proyecto fue desarrollado como parte del proyecto final del curso de Desarrollo Web en la Universidad de Ciencias Aplicadas.
+El objetivo principal fue aplicar los conocimientos adquiridos en el diseño, desarrollo e implementación de aplicaciones web modernas utilizando tecnologías frontend con Angular y servicios en la nube mediante AWS.
